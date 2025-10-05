@@ -11,9 +11,8 @@ Users can sign up, log in, add books, and post reviews with ratings.
 * Add, edit, and delete books
 * Review system with ratings and comments
 * Pagination for book listings
-* Average ratings calculation
-* React frontend with protected routes
-
+* Bootstrap frontend with protected routes
+* Deployed and Live
 ---
 
 ## 🛠️ Tech Stack
@@ -25,45 +24,6 @@ Users can sign up, log in, add books, and post reviews with ratings.
 
 ---
 
-## 📦 Installation
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/YOUR-USERNAME/BookVerse.git
-   cd BookVerse
-   ```
-
-2. Install dependencies for both frontend and backend:
-
-   ```bash
-   cd backend && npm install
-   cd ../frontend && npm install
-   ```
-
-3. Create a `.env` file in `/backend` with the following:
-
-   ```
-   MONGO_URI=your_mongo_connection_string
-   JWT_SECRET=your_secret_key
-   PORT=5000
-   ```
-
-4. Run the backend:
-
-   ```bash
-   cd backend
-   npm run dev
-   ```
-
-5. Run the frontend:
-
-   ```bash
-   cd frontend
-   npm start
-   ```
-
----
 
 ## 📂 Project Structure
 
