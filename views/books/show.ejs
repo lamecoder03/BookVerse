@@ -14,20 +14,21 @@
     <!-- Book Images & Details -->
     <div class="col-12 col-md-6">
       <% if (book.images.length > 0) { %>
-        <div id="carouselCtrl" class="carousel slide mb-4">
-          <div class="carousel-inner rounded shadow-sm">
+        <div id="bookImagesCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
+          <div class="carousel-inner">
             <% book.images.forEach((img, i) => { %>
               <div class="carousel-item <%= i === 0 ? 'active' : '' %>">
-                <img src="<%= img.url %>" class="d-block w-100 rounded" alt="Book Image">
+                <img src="<%= img.url %>" class="d-block w-100" alt="Book Image"
+                     style="height: 400px; object-fit: contain;">
               </div>
             <% }) %>
           </div>
-          <% if (book.images.length > 1) { %>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselCtrl" data-bs-slide="prev">
+          <% if(book.images.length > 1){ %>
+            <button class="carousel-control-prev" type="button" data-bs-target="#bookImagesCarousel" data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselCtrl" data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-bs-target="#bookImagesCarousel" data-bs-slide="next">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Next</span>
             </button>
@@ -108,7 +109,7 @@
             </div>
           <% }) %>
         <% } else { %>
-          <p class="text-muted">No reviews yet. Be the first to review!</p>
+          <p class="">No reviews yet. Be the first to review!</p>
         <% } %>
       </div>
     </div>
