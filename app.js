@@ -57,7 +57,7 @@ store.on("error",function(e){
 const sessionConfig = {
     store: store,
     name: 'session',
-    secret: 'thisisasecret',
+    secret: process.env.SECRET,  // use environment variable
     resave: false,
     saveUninitialized: true,
     cookie: { 
