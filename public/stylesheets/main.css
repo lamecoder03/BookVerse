@@ -1,0 +1,331 @@
+/* ===============================
+   THEME VARIABLES
+================================*/
+:root {
+  --bg-color: #f8f9fa;
+  --text-color: #212529;
+  --muted-text: #6c757d;
+  --secondary-text: #6c757d;
+  --card-bg: #fff;
+  --card-shadow: rgba(0,0,0,0.08);
+  --card-footer-bg: #f9f9f9;
+  --navbar-bg: #212529;
+  --navbar-link: #ddd;
+  --navbar-link-hover: #ffc107;
+  --footer-bg: #1f1f1f;
+  --footer-text: #ccc;
+  --form-bg: #fff;
+  --form-border: #ced4da;
+  --btn-primary: #4e73df;
+  --btn-primary-hover: #3c5ccf;
+  --btn-success: #28a745;
+  --btn-success-hover: #218838;
+  --btn-info: #17a2b8;
+  --btn-info-hover: #117a8b;
+  --btn-danger: #dc3545;
+  --btn-danger-hover: #b02a37;
+  --hero-bg: linear-gradient(to right, #4e54c8, #8f94fb);
+  --hero-text: #fff;
+  --scroll-thumb: rgba(0,0,0,0.3);
+  --scroll-track: rgba(0,0,0,0.05);
+}
+
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #e2e2e2;
+  --muted-text: #bbb;
+  --secondary-text: #999;
+  --card-bg: #1f1f1f;
+  --card-shadow: rgba(0,0,0,0.8);
+  --card-footer-bg: #2a2a2a;
+  --navbar-bg: #0d0d0d;
+  --navbar-link: #ccc;
+  --navbar-link-hover: #ffc107;
+  --footer-bg: #0b0b0b;
+  --footer-text: #aaa;
+  --form-bg: #1e1e1e;
+  --form-border: #444;
+  --btn-primary: #5575f0;
+  --btn-primary-hover: #3c5ccf;
+  --btn-success: #218838;
+  --btn-success-hover: #1b5e2d;
+  --btn-info: #117a8b;
+  --btn-info-hover: #0b555e;
+  --btn-danger: #b02a37;
+  --btn-danger-hover: #7a1f26;
+  --hero-bg: linear-gradient(to right, #2c2c2c, #5c5c5c);
+  --hero-text: #e2e2e2;
+  --scroll-thumb: rgba(255,255,255,0.3);
+  --scroll-track: rgba(255,255,255,0.1);
+}
+
+/* ===============================
+   GLOBAL STYLES
+================================*/
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a {
+  color: var(--text-color);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: var(--navbar-link-hover);
+}
+
+h1,h2,h3,h4,h5,h6 {
+  color: var(--text-color);
+}
+
+.text-adaptive {
+  color: var(--text-color) !important;
+  transition: color 0.3s ease;
+}
+
+main.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ===============================
+   NAVBAR
+================================*/
+.navbar {
+  background-color: var(--navbar-bg) !important;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-brand {
+  color: #ffc107 !important;
+  font-weight: 700;
+  font-size: 1.4rem;
+  letter-spacing: 0.5px;
+}
+
+.navbar-dark .nav-link {
+  color: var(--navbar-link);
+  transition: color 0.2s ease-in-out;
+}
+
+.navbar-dark .nav-link:hover {
+  color: var(--navbar-link-hover) !important;
+}
+
+/* ===============================
+   HERO SECTION
+================================*/
+.hero-section, .hero-bg {
+  background: var(--hero-bg);
+  color: var(--hero-text);
+  text-align: center;
+  padding: 5rem 1rem;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ===============================
+   CARD STYLES
+================================*/
+.card {
+  background-color: var(--card-bg);
+  border-radius: 0.8rem;
+  box-shadow: 0 3px 10px var(--card-shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease, color 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px var(--card-shadow);
+}
+
+.card-title {
+  color: var(--text-color);
+  font-weight: 700;
+  position: relative;
+}
+
+.card-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  margin-top: 0.3rem;
+  background-color: var(--btn-primary);
+  border-radius: 2px;
+}
+
+.card-body {
+  color: var(--text-color);
+}
+
+.card-footer {
+  background-color: var(--card-footer-bg);
+  color: var(--text-color);
+}
+
+.list-group-item {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+[data-theme="dark"] .list-group-item {
+  background-color: #2a2a2a;
+  color: #ddd;
+  border-bottom: 1px solid #3a3a3a;
+}
+
+.list-group-item:hover {
+  background-color: rgba(0,0,0,0.05);
+}
+
+[data-theme="dark"] .list-group-item:hover {
+  background-color: #333;
+}
+
+/* ===============================
+   BUTTONS
+================================*/
+.btn {
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-primary { background-color: var(--btn-primary); border-color: var(--btn-primary);}
+.btn-primary:hover { background-color: var(--btn-primary-hover); border-color: var(--btn-primary-hover);}
+.btn-success { background-color: var(--btn-success); border-color: var(--btn-success);}
+.btn-success:hover { background-color: var(--btn-success-hover); border-color: var(--btn-success-hover);}
+.btn-info { background-color: var(--btn-info); border-color: var(--btn-info);}
+.btn-info:hover { background-color: var(--btn-info-hover); border-color: var(--btn-info-hover);}
+.btn-danger { background-color: var(--btn-danger); border-color: var(--btn-danger);}
+.btn-danger:hover { background-color: var(--btn-danger-hover); border-color: var(--btn-danger-hover);}
+
+/* ===============================
+   FORMS
+================================*/
+form {
+  background: var(--form-bg);
+  border-radius: 0.8rem;
+  padding: 2rem;
+  box-shadow: 0 4px 15px var(--card-shadow);
+  transition: background 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+}
+
+form label, form .form-label {
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+input, textarea, select {
+  background-color: var(--form-bg);
+  color: var(--text-color);
+  border: 1px solid var(--form-border);
+  transition: border-color 0.2s ease, background 0.3s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #999;
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select {
+  background-color: #2a2a2a;
+  color: #e2e2e2;
+  border-color: #444;
+}
+
+[data-theme="dark"] form label,
+[data-theme="dark"] form .form-label {
+  color: #e2e2e2;
+}
+
+[data-theme="dark"] .valid-feedback {
+  color: #28a745;
+}
+
+/* ===============================
+   REVIEWS / SCROLLABLE
+================================*/
+.review-container {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.review-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.review-container::-webkit-scrollbar-thumb {
+  background-color: var(--scroll-thumb);
+  border-radius: 4px;
+}
+
+.review-container::-webkit-scrollbar-track {
+  background-color: var(--scroll-track);
+}
+
+/* ===============================
+   TINY DELETE BUTTON
+================================*/
+.btn-delete-tiny {
+  padding: 0.1rem 0.25rem !important;
+  font-size: 0.75rem;
+  line-height: 1;
+  border: none !important;
+  background-color: rgba(220,53,69,0.1);
+  color: #dc3545;
+  min-width: 0 !important;
+  height: auto;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-delete-tiny:hover {
+  background-color: rgba(220,53,69,0.25);
+  color: #fff;
+}
+
+[data-theme="dark"] .btn-delete-tiny {
+  background-color: rgba(220,53,69,0.2);
+  color: #f28b91;
+}
+
+.form-delete-tiny {
+  position: absolute;
+  top: 0.25rem;
+  right: 0.25rem;
+  margin: 0 !important;
+}
+
+/* ===============================
+   CAROUSEL IMAGES
+================================*/
+.carousel-inner img {
+  border-radius: 0.8rem;
+  object-fit: cover;
+  height: 250px;
+}
+
+/* ===============================
+   MEDIA QUERIES (RESPONSIVE)
+================================*/
+@media (max-width: 768px) {
+  .hero-section, .hero-bg {
+    padding: 3rem 1rem;
+  }
+
+  .card .card-title::after {
+    width: 40px;
+  }
+}

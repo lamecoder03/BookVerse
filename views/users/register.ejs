@@ -1,0 +1,63 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center">
+  <div class="row w-100">
+
+    <!-- Left side: branding + info -->
+    <div class="col-md-6 d-none d-md-flex flex-column justify-content-center align-items-start px-5">
+      <span class="display-1 fw-bold mb-3"
+            style="background: linear-gradient(90deg, #6a11cb, #2575fc);
+                   -webkit-background-clip: text;
+                   background-clip: text;
+                   color: transparent;
+                   text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+                   letter-spacing: 2px;">
+        BookVerse
+      </span>
+      <p class="fs-4  mb-4">Dive into a universe of books and reviews. Share your favorite reads and discover new ones!</p>
+      <ul class="list-unstyled fs-5">
+        <li class="mb-2">📚 Explore thousands of books</li>
+        <li class="mb-2">📝 Write and read reviews</li>
+        <li class="mb-2">🤝 Connect with fellow readers</li>
+      </ul>
+    </div>
+
+    <!-- Right side: form -->
+    <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
+      <div class="card shadow-lg p-5 w-100" style="max-width: 420px;">
+        <h2 class="text-center mb-4 fw-bold text-primary">Register</h2>
+
+        <form action="/register" method="POST" class="validated-form" novalidate>
+          
+          <div class="mb-3">
+            <label class="form-label" for="username">Username</label>
+            <input class="form-control" type="text" id="username" name="username" required>
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label" for="email">Email</label>
+            <input class="form-control" type="email" id="email" name="email" required  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Please enter a valid email address">
+      
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label" for="password">Password</label>
+            <input class="form-control" type="password" id="password" name="password" required>
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+
+          <div class="d-grid mb-3">
+            <button class="btn btn-success btn-lg">Register</button>
+          </div>
+
+          <p class="text-center small mb-0">
+            Already have an account? <a href="/login" class="text-primary fw-bold">Login here</a>
+          </p>
+
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>

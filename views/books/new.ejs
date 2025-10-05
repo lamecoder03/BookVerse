@@ -1,0 +1,56 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="row justify-content-center">
+  <div class="col-12 col-md-8 col-lg-6">
+    <div class="card shadow-sm p-4">
+      <h2 class="text-center mb-4 fw-bold text-primary">Add a New Book</h2>
+
+      <form action="/books" method="post" novalidate class="validated-form" enctype="multipart/form-data">
+        <div class="mb-3">
+          <label class="form-label text-adaptive" for="title">Title</label>
+          <input class="form-control" type="text" id="title" name="book[title]" required>
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label text-adaptive" for="genre">Genre</label>
+          <input class="form-control" type="text" id="genre" name="book[genre]" required>
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label text-adaptive" for="writer">Writer</label>
+          <input class="form-control" type="text" id="writer" name="book[writer]" required>
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label text-adaptive" for="images">Upload Images</label>
+          <input class="form-control" type="file" id="images" name="book[images]" multiple>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label text-adaptive" for="year">Publish Year</label>
+          <input type="text" class="form-control" id="year" name="book[year]" placeholder="YYYY" required>
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label text-adaptive" for="description">Description</label>
+          <textarea class="form-control" id="description" name="book[description]" rows="4" required></textarea>
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+
+        <div class="d-grid mb-3">
+          <button class="btn btn-success btn-lg">Add New Book</button>
+        </div>
+
+        <p class="text-center">
+          <a href="/books" class="text-primary d-inline-flex align-items-center">
+            <i class="bi bi-arrow-left me-2"></i> Back to All Books
+          </a>
+        </p>
+      </form>
+    </div>
+  </div>
+</div>

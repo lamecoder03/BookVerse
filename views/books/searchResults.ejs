@@ -1,0 +1,25 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="container py-5">
+  <h3 class="mb-4">Search results for "<%= searchQuery %>"</h3>
+
+  <% if (books.length === 0) { %>
+    <p>No books found.</p>
+  <% } else { %>
+    <div class="row">
+      <% books.forEach(book => { %>
+        <div class="col-md-3 mb-4">
+          <div class="card h-100 shadow-sm">
+            <img src="<%= book.images[0] ? book.images[0].thumbnail : '/images/default-book.jpg' %>" class="card-img-top" alt="<%= book.title %>">
+            <div class="card-body">
+              <h5 class="card-title"><%= book.title %></h5>
+              <p class="card-text"><strong>Writer:</strong> <%= book.writer %></p>
+              <p class="card-text"><strong>Genre:</strong> <%= book.genre %></p>
+              <a href="/books/<%= book._id %>" class="btn btn-primary btn-sm">View</a>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  <% } %>
+</div>

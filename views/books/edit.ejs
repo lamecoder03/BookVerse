@@ -1,0 +1,68 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="row justify-content-center mt-5">
+  <div class="col-md-6 col-lg-5">
+    <div class="card shadow-sm p-4">
+      <h2 class="text-center mb-4 fw-bold text-primary">Edit Book</h2>
+
+      <form action="/books/<%= book._id %>?_method=PUT" method="post" novalidate class="validated-form" enctype="multipart/form-data">
+        <div class="mb-3">
+          <label class="form-label" for="title">Title</label>
+          <input class="form-control" type="text" id="title" name="book[title]" value="<%= book.title %>" required>
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="genre">Genre</label>
+          <input class="form-control" type="text" id="genre" name="book[genre]" value="<%= book.genre %>" required>
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="writer">Writer</label>
+          <input class="form-control" type="text" id="writer" name="book[writer]" value="<%= book.writer %>" required>
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="images">Update Images</label>
+          <input class="form-control" type="file" id="images" name="book[images]" multiple>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="year">Publish Year</label>
+          <input type="text" class="form-control" id="year" name="book[year]" value="<%= book.year %>" placeholder="YYYY" required>
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="description">Description</label>
+          <textarea class="form-control" id="description" name="book[description]" rows="4" required><%= book.description %></textarea>
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+
+        <% if(book.images.length > 0) { %>
+        <div class="mb-3">
+          <label class="form-label">Current Images</label>
+          <div class="d-flex flex-wrap gap-2">
+            <% book.images.forEach(function(img, i){ %>
+              <div class="position-relative">
+                <img src="<%= img.thumbnail %>" class="img-thumbnail" style="height:100px; width:auto;">
+                <div class="form-check position-absolute top-0 start-0 m-1">
+                  <input type="checkbox" class="form-check-input" id="img-<%=i%>" name="deleteImages[]" value="<%= img.filename %>">
+                  <label class="form-check-label text-white" for="img-<%=i%>">Delete</label>
+                </div>
+              </div>
+            <% }) %>
+          </div>
+        </div>
+        <% } %>
+
+        <div class="d-grid mb-3">
+          <button class="btn btn-primary  btn-lg">Update Book</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

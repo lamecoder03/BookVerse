@@ -1,0 +1,117 @@
+<% layout('layouts/boilerplate') %>
+<link rel="stylesheet" href="/stylesheets/stars.css">
+
+<div class="container mt-5 mb-4">
+  <h1 class="text-center fw-bold text-primary display-4 position-relative">
+    Book Details
+    <span class="d-block mx-auto mt-2" style="width: 80px; height: 4px; background: var(--btn-primary); border-radius: 2px;"></span>
+  </h1>
+</div>
+
+<div class="container">
+  <div class="row justify-content-center g-4">
+
+    <!-- Book Images & Details -->
+    <div class="col-12 col-md-6">
+      <% if (book.images.length > 0) { %>
+        <div id="carouselCtrl" class="carousel slide mb-4">
+          <div class="carousel-inner rounded shadow-sm">
+            <% book.images.forEach((img, i) => { %>
+              <div class="carousel-item <%= i === 0 ? 'active' : '' %>">
+                <img src="<%= img.url %>" class="d-block w-100 rounded" alt="Book Image">
+              </div>
+            <% }) %>
+          </div>
+          <% if (book.images.length > 1) { %>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselCtrl" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselCtrl" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          <% } %>
+        </div>
+      <% } %>
+
+      <div class="card shadow-sm mb-4">
+        <div class="card-body">
+          <h3 class="card-title fw-bold"><%= book.title %></h3>
+          <p class="card-text"><%= book.description %></p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><strong>Genre:</strong> <%= book.genre %></li>
+          <li class="list-group-item"><strong>Year:</strong> <%= book.year %></li>
+          <li class="list-group-item"><strong>Writer:</strong> <%= book.writer %></li>
+          <li class="list-group-item"><strong>Submitted by:</strong> <%= book.author ? book.author.username : 'Unknown' %></li>
+        </ul>
+        <% if(currUser && book.author.equals(currUser)) { %>
+          <div class="card-body d-flex gap-2">
+            <a class="btn btn-info flex-fill" style="color: var(--text-color)" href="/books/<%= book._id %>/edit">Edit</a>
+            <form action="/books/<%= book._id %>?_method=DELETE" method="post" class="flex-fill m-0 p-0">
+              <button class="btn btn-danger w-100">Delete</button>
+            </form>
+          </div>
+        <% } %>
+      </div>
+    </div>
+
+    <!-- Review Section -->
+    <div class="col-12 col-md-6">
+      <% if(currUser) { %>
+        <div class="card shadow-sm mb-4 p-4">
+          <h4 class="fw-bold mb-3">Leave a Review</h4>
+          <form action="/books/<%=book._id%>/reviews" method="POST" class="validated-form" novalidate>
+            <div class="mb-3">
+              <fieldset class="starability-basic">
+                <legend style="color: var(--text-color)">Rating:</legend>
+                <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
+                <input type="radio" id="first-rate1" name="review[rating]" value="1" /><label for="first-rate1" title="Terrible"></label>
+                <input type="radio" id="first-rate2" name="review[rating]" value="2" /><label for="first-rate2" title="Not good"></label>
+                <input type="radio" id="first-rate3" name="review[rating]" value="3" /><label for="first-rate3" title="Average"></label>
+                <input type="radio" id="first-rate4" name="review[rating]" value="4" /><label for="first-rate4" title="Very good"></label>
+                <input type="radio" id="first-rate5" name="review[rating]" value="5" /><label for="first-rate5" title="Amazing"></label>
+              </fieldset>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label" for="body">Review</label>
+              <textarea class="form-control" name="review[body]" id="body" rows="3" required></textarea>
+            </div>
+
+            <div class="d-grid">
+              <button class="btn btn-success">Submit</button>
+            </div>
+          </form>
+        </div>
+      <% } %>
+
+      <!-- Scrollable Reviews Container -->
+      <div class="card p-3 review-container">
+        <h4 class="fw-bold mb-3">Reviews</h4>
+
+        <% if(book.reviews.length > 0) { %>
+          <% book.reviews.forEach(review => { %>
+            <div class="card mb-3 position-relative border-1">
+              <% if(currUser && review.author.equals(currUser)) { %>
+                <form action="/books/<%=book._id%>/reviews/<%=review._id%>?_method=DELETE" 
+                      method="POST" class="position-absolute top-0 end-0 m-2">
+                  <button class="btn btn-sm btn-outline-danger">Delete</button>
+                </form>
+              <% } %>
+              <div class="card-body">
+                <h5 class="card-title"><%= review.author ? review.author.username : 'Anonymous' %></h5>
+                <p class="starability-result" data-rating="<%= review.rating %>"></p>
+                <p class="card-text"><%= review.body %></p>
+              </div>
+            </div>
+          <% }) %>
+        <% } else { %>
+          <p class="text-muted">No reviews yet. Be the first to review!</p>
+        <% } %>
+      </div>
+    </div>
+
+  </div>
+</div>

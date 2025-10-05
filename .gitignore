@@ -1,0 +1,16 @@
+﻿# === Node / dependencies ===
+node_modules/
+npm-debug.log
+dist/
+build/
+coverage/
+
+# === Environment & config ===
+.env
+.env.*
+!.env.example
+
+# === System files ===
+.DS_Store
+Thumbs.db
+.vscode/

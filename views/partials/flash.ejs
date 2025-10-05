@@ -1,0 +1,51 @@
+<% if(success && success.length) { %>
+  <div class="flash-msg toast align-items-center text-bg-success border-0 show" role="alert">
+    <div class="d-flex">
+      <div class="toast-body">
+        <i class="bi bi-check-circle-fill me-2"></i>
+        <%= success %>
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+<% } %>
+
+<% if(error && error.length) { %>
+  <div class="flash-msg toast align-items-center text-bg-danger border-0 show" role="alert">
+    <div class="d-flex">
+      <div class="toast-body">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+        <%= error %>
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+<% } %>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const flashMessages = document.querySelectorAll('.flash-msg');
+    flashMessages.forEach(msg => {
+      
+      msg.style.top = '-100px';
+      msg.style.opacity = '0';
+      msg.style.position = 'fixed';
+      msg.style.left = '50%';
+      msg.style.transform = 'translateX(-50%)';
+      msg.style.zIndex = '1050';
+      msg.style.minWidth = '300px';
+      msg.style.transition = 'all 0.5s ease';
+
+      setTimeout(() => {
+        msg.style.top = '20px';
+        msg.style.opacity = '1';
+      }, 100);
+
+      
+      setTimeout(() => {
+        msg.style.top = '-100px';
+        msg.style.opacity = '0';
+      }, 4000); 
+    });
+  });
+</script>

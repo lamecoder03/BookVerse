@@ -1,0 +1,50 @@
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark shadow-sm">
+  <div class="container-fluid">
+  
+    <a class="navbar-brand fw-bold" href="#">BookVerse</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" href="/">Home</a>
+        <a class="nav-link" href="/books">Books</a>
+        <a class="nav-link" href="/books/new">Add Book</a>
+        <a class="nav-link" href="#" id="openSearch">Search</a>
+      </div>
+
+      
+      <div class="navbar-nav ms-auto">
+        <% if(!currUser){ %>
+          <a class="nav-link" href="/login">Login</a>
+          <a class="nav-link" href="/register">Register</a>
+        <% } else { %>
+          <span class="nav-link">Hello, <%= currUser.username %></span>
+          <a class="nav-link text-danger fw-bold" href="/logout">Logout</a>
+        <% } %>
+      </div>
+      <button id="themeToggle" class="btn btn-sm btn-outline-warning ms-2">
+        <i class="bi bi-moon"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+
+<div id="navbarSearch" class=" border-bottom shadow-sm  d-none position-relative">
+  <form action="/books/search" method="GET" class="d-flex align-items-center justify-content-center">
+    <input 
+      class="form-control me-2"
+      type="search" 
+      name="query" 
+      placeholder="Search by genre or writer..."
+      aria-label="Search"
+      style="max-width: 400px;"
+      required>
+    <button class="btn btn-primary me-2" type="submit">Go</button>
+    <button type="button" id="closeSearch" class="btn btn-outline-secondary">✖</button>
+  </form>
+</div>
