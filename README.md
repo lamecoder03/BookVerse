@@ -18,7 +18,7 @@ Users can sign up, log in, add books, and post reviews with ratings.
 
 ## 🛠️ Tech Stack
 
-* **Frontend:** React, React Router, Axios, Tailwind CSS
+* **Frontend:** CSS, Bootstrap, HTML, Javascript
 * **Backend:** Node.js, Express.js
 * **Database:** MongoDB Atlas
 * **Auth:** JWT, bcrypt
