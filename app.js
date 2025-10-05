@@ -21,10 +21,7 @@ const authRoutes = require('./routes/auth');
 
 const dbURl = process.env.DB_URL || 'mongodb://localhost:27017/BookVerse';
 
-mongoose.connect(dbURl, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true, 
-});
+mongoose.connect(dbURl);
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "Connection Error: 1234"));
